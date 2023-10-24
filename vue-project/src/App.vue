@@ -21,6 +21,8 @@ import HelloWorld from "./components/HelloWorld.vue";
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/template">template문법</RouterLink>
         <RouterLink to="/reactivity">Reactivity</RouterLink>
+        <RouterLink to="/computed">Computed Properties</RouterLink>
+        <RouterLink to="/binding">Class style Binding</RouterLink>
       </nav>
     </div>
   </header>
