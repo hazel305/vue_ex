@@ -22,6 +22,11 @@ const router = createRouter({
       name: "template",
       component: () => import("../views/TempView.vue"),
     },
+    {
+      path: "/reactivity",
+      name: "reactivity",
+      component: () => import("../views/ReactivityView.vue"),
+    },
   ],
 });
 
