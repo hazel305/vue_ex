@@ -1,53 +1,43 @@
-<script setup>
-import { reactive, computed } from "vue";
-
-const author = reactive({
-  name: "John Doe",
-  books: [
-    "Vue 2 - Advanced Guide",
-    "Vue 3 - Basic Guide",
-    "Vue 4 - The Mystery",
-  ],
-  firstName: "John",
-  lastName: "Doe",
-});
-
-const publishedBooksMessage = computed(() => {
-  return author.books.length > 0 ? "Yes" : "No";
-});
-
-const fullName = computed({
-  get() {
-    return author.firstName + " " + author.lastName;
+<script>
+export default {
+  data() {
+    return {
+      author: {
+        name: "John Doe",
+        books: [
+          "Vue 2 - Advanced Guide",
+          "Vue 3 - Basic Guide",
+          "Vue 4 - The Mystery",
+        ],
+      },
+      firstName: "John",
+      lastName: "Doe",
+    };
   },
-  set(newValue) {
-    const [first, last] = newValue.split(" ");
-    author.firstName = first;
-    author.lastName = last;
+  computed: {
+    // 계산된 값을 반환하는 속성
+    publishedBooksMessage() {
+      // `this`는 컴포넌트 인스턴스를 가리킵니다.
+      return this.author.books.length > 0 ? "Yes" : "No";
+    },
+    fullName: {
+      get() {
+        return this.firstName + " " + this.lastName;
+      },
+      set(newValue) {
+        [this.firstName, this.lastName] = newValue.split(" ");
+      },
+    },
   },
-});
+};
 </script>
 
 <template>
-  <div class="layout">
-    <h1>This is a computed properties page</h1>
-
-    <p>Has published books:</p>
-    <span>{{ publishedBooksMessage }}</span>
-
-    <hr />
-    <div>Name: {{ fullName }}</div>
-    <div>Name: {{ (fullName = "길동 홍") }}</div>
-    <div>Name: {{ (fullName = " 김") }}</div>
-  </div>
+  <p>책을 가지고 있다:</p>
+  <span>{{ publishedBooksMessage }}</span>
+  <hr />
+  <div>Name: {{ this.fullName }}</div>
+  <!-- get() -->
+  <div>이름: {{ (this.fullName = "길동 홍") }}</div>
+  <div>이름: {{ (this.fullName = "  김") }}</div>
 </template>
-
-<style scoped>
-@media (min-width: 1024px) {
-  .layout {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
