@@ -31,6 +31,7 @@ export default {
     even(numbers) {
       console.log("even 실행");
       //data함수내 어느 값이든 변경되면 실행
+      //인수 numbers의 값을 가지고 직접 바뀌지 않으면 sets값이 바뀌는거에 상관없이
       return numbers.filter((number) => number % 2 === 0);
     },
   },
