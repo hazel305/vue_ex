@@ -23,6 +23,7 @@ import HelloWorld from "./components/HelloWorld.vue";
         <RouterLink to="/reactivity">Reactivity</RouterLink>
         <RouterLink to="/computed">Computed Properties</RouterLink>
         <RouterLink to="/binding">Class style Binding</RouterLink>
+        <RouterLink to="/conditional">Conditional Rendering</RouterLink>
       </nav>
     </div>
   </header>
