@@ -24,6 +24,8 @@ import HelloWorld from "./components/HelloWorld.vue";
         <RouterLink to="/computed">Computed Properties</RouterLink>
         <RouterLink to="/binding">Class style Binding</RouterLink>
         <RouterLink to="/conditional">Conditional Rendering</RouterLink>
+        <RouterLink to="/list">list Rendering</RouterLink>
+        <RouterLink to="/event">event handling</RouterLink>
       </nav>
     </div>
   </header>
@@ -32,6 +34,11 @@ import HelloWorld from "./components/HelloWorld.vue";
 </template>
 
 <style scoped>
+.layout {
+  padding: 20px;
+  border-top: 2px solid #ccc;
+  margin-top: 40px;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
