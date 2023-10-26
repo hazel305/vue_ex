@@ -30,6 +30,7 @@ import HelloWorld from "./components/HelloWorld.vue";
         <RouterLink to="/lifecycle">Life Cycle</RouterLink>
         <RouterLink to="/watchers">Watchers</RouterLink>
         <RouterLink to="/refs">refs</RouterLink>
+        <RouterLink to="/component">component basic </RouterLink>
       </nav>
     </div>
   </header>
