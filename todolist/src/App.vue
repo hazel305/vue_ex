@@ -1,5 +1,10 @@
 <script>
+import Todo from "./components/Todo.vue";
+
 export default {
+  components: {
+    Todo,
+  },
   data() {
     return {
       todoText: "",
@@ -25,6 +30,7 @@ export default {
         placeholder="Add todo"
       />
     </div>
+    <Todo v-for="todo in todos" :key="todo.id" :todo="todo" />
   </div>
 </template>
 
