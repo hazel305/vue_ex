@@ -6,19 +6,28 @@ export default {
       required: true,
     },
   },
+  methods: {
+    toggleCheckbox(e) {
+      this.$emit("toggle-checkbox", {
+        id: this.todo.id,
+        checked: e.target.checked,
+      });
+    },
+  },
 };
 </script>
 
 <template>
   <div>
-    <div class="form-check">
+    <div class="form-check" :data-id="todo.id">
       <input
         class="form-check-input"
         type="checkbox"
         value=""
-        id="input{{ todo.id }}"
+        :id="'input' + todo.id"
+        @change="toggleCheckbox"
       />
-      <label class="form-check-label" for="input{{ todo.id }}">
+      <label class="form-check-label" :for="`input${todo.id}`">
         {{ todo.text }}
       </label>
     </div>
