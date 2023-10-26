@@ -15,6 +15,17 @@ export default {
       ],
     };
   },
+  methods: {
+    Addtodo(e) {
+      // console.log(e.target.value);
+      this.todos.push({
+        id: Math.random(),
+        text: e.target.value,
+        checked: false,
+      });
+      this.todoText = "";
+    },
+  },
 };
 </script>
 
@@ -28,6 +39,9 @@ export default {
         class="form-control"
         id="todo"
         placeholder="Add todo"
+        @keyup.enter="Addtodo"
+        v-model="todoText"
+        required
       />
     </div>
     <Todo v-for="todo in todos" :key="todo.id" :todo="todo" />
