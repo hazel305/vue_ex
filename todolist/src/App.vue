@@ -30,6 +30,14 @@ export default {
       this.todos[index].checked = checked;
       console.log(this.todos);
     },
+    deleteTodo(id) {
+      if (window.confirm("정말 삭제할까요")) {
+        const index = this.todos.findIndex((todo) => todo.id === id);
+        this.todos.splice(index, 1);
+      } else {
+        alert("최소되었습니다.");
+      }
+    },
   },
 };
 </script>
@@ -54,6 +62,7 @@ export default {
       :key="todo.id"
       :todo="todo"
       @toggle-checkbox="toggleCheck"
+      @click-delete="deleteTodo"
     />
   </div>
 </template>
