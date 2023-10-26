@@ -1,11 +1,17 @@
 <script>
-import ButtonCounterView from "./ButtonCounterView.vue";
+import ButtonCounter from "./ButtonCounterView.vue";
 import BlogPost from "./BlogPost.vue";
+import Home from "./Tabs/Home.vue";
+import Posts from "./Tabs/Post.vue";
+import Archives from "./Tabs/Archive.vue";
 
 export default {
   components: {
-    ButtonCounterView,
+    ButtonCounter,
     BlogPost,
+    Home,
+    Posts,
+    Archives,
   },
   data() {
     return {
@@ -15,6 +21,8 @@ export default {
         { id: 3, title: "제목3" },
       ],
       postFontSize: 1,
+      currentTab: "Home",
+      tabs: ["Home", "Posts", "Archives"],
     };
   },
 };
@@ -22,11 +30,12 @@ export default {
 
 <template>
   <div class="layout">
-    <h1>This is component page</h1>
-    <ButtonCounterView />
-    <ButtonCounterView />
-    <br />
-    <h2>blog</h2>
+    <h1>This is Components Basics page</h1>
+    <ButtonCounter />
+    <ButtonCounter />
+    <ButtonCounter />
+    <hr />
+    <h2>Blog</h2>
     <div :style="{ fontSize: postFontSize + 'em' }">
       <BlogPost
         v-for="post in posts"
@@ -36,15 +45,29 @@ export default {
         @smaller-text="postFontSize -= 0.1"
       />
     </div>
+    <hr />
+    <h2>Tab</h2>
+    <div class="tabs">
+      <div class="buttons">
+        <button
+          v-for="tab in tabs"
+          :key="tab"
+          :class="['tab-button', { active: currentTab === tab }]"
+          @click="currentTab = tab"
+        >
+          {{ tab }}
+        </button>
+      </div>
+      <component :is="currentTab"></component>
+    </div>
   </div>
 </template>
-
 <style>
-@media (min-width: 1024px) {
-  .layout {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.buttons button {
+  opacity: 0.5;
+  padding: 10px;
+}
+.buttons button.active {
+  opacity: 1;
 }
 </style>
