@@ -13,6 +13,7 @@ export default {
         { id: 2, text: "learn chapter2", checked: false },
         { id: 3, text: "learn chapter3", checked: false },
       ],
+      modifyingTodoId: null,
     };
   },
   methods: {
@@ -37,6 +38,10 @@ export default {
       } else {
         alert("최소되었습니다.");
       }
+    },
+    modifyTodo(id, text) {
+      const index = this.todos.findIndex((todo) => todo.id === id);
+      this.todos[index].text = text;
     },
   },
 };
@@ -63,7 +68,9 @@ export default {
       :todo="todo"
       @toggle-checkbox="toggleCheck"
       @click-delete="deleteTodo"
+      @click-modify="modifyTodo" 
     />
+
   </div>
 </template>
 
