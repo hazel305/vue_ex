@@ -1,24 +1,28 @@
 <template>
-    <div>
-      <input v-model="text" @keyup.enter="addTodo" placeholder="Enter your todo" />
-      <button @click="addTodo">Add</button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        text: '',
-      };
-    },
-    methods: {
-      addTodo() {
-        if (this.text.trim() !== '') {
-          this.$emit('addTodo', this.text);
-          this.text = '';
-        }
-      },
-    },
-  };
-  </script>
+  <form @submit.prevent="handleSubmit">
+    <input type="text" placeholder="Enter a todo..." v-model="text" />
+    <button type="submit">Add</button>
+  </form>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  props: ['addTodo'],
+  setup(props) {
+    const text = ref('');
+
+    const handleSubmit = () => {
+      if (!text.value.trim()) return;
+      props.addTodo(text.value);
+      text.value = '';
+    };
+
+    return {
+      text,
+      handleSubmit
+    };
+  }
+};
+</script>
